@@ -37,7 +37,7 @@ CLUSTER_EXISTS=$(check_for_existing_cluster)
 
 if [ -n "$CLUSTER_EXISTS" ]; then
   bold "Retrieving credentials for GKE cluster $GKE_CLUSTER..."
-  gcloud container clusters get-credentials $GKE_CLUSTER --zone $ZONE --project $PROJECT_ID
+  gcloud container clusters get-credentials $GKE_CLUSTER --region $REGION --project $PROJECT_ID
 
   bold "Checking for Spinnaker application in cluster $GKE_CLUSTER..."
   SPINNAKER_APPLICATION_LIST_JSON=$(kubectl get applications -n spinnaker -l app.kubernetes.io/name=spinnaker --output json)
